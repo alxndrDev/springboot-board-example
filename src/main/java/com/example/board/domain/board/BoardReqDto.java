@@ -8,6 +8,7 @@ import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 /**
  * @author Alexander
@@ -19,8 +20,10 @@ import javax.validation.constraints.Min;
 public class BoardReqDto {
 
     @Length(min = 5, message = "20자이상 입력해주시기 바랍니다.")
+    @NotNull
     private String title;
 
     @Length(min = 20, message = "50자 이상 입력해주시기 바랍니다.")
+    @NotNull
     private String content;
 }
