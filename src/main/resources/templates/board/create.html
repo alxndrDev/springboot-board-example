@@ -1,19 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Create Board</title>
 </head>
 <body>
     <h1>새로운 글 생성하기</h1>
-    <form action="/board" method="post">
-        <div>
-            제목 : <input type="text" name="title" id="title">
-        </div>
-        <div>
-            본문 : <textarea cols="20" rows="10" name="content"></textarea>
-        </div>
-        <button type="submit">생성</button>
+    <form action="/board" th:action="@{/board}" th:object="${boardReqDto}" method="post">
+        <table>
+            <tr>
+                <td>제목:</td>
+                <td><input type="text" th:field="*{title}" /></td>
+                <td th:if="${#fields.hasErrors('title')}" th:errors="*{title}">Name Error</td>
+            </tr>
+            <tr>
+                <td>Age:</td>
+                <td><textarea cols="20" rows="5" th:field="*{content}"></textarea></td>
+                <td th:if="${#fields.hasErrors('content')}" th:errors="*{content}">Age Error</td>
+            </tr>
+            <tr>
+                <td><button type="submit">Submit</button></td>
+            </tr>
+        </table>
     </form>
 </body>
 </html>

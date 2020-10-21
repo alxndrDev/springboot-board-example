@@ -3,7 +3,10 @@ package com.example.board.domain.board;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 /**
  * @author Alexander
@@ -14,15 +17,21 @@ import org.springframework.web.bind.annotation.*;
 public class BoardController {
 
     @GetMapping
-    public String createView() {
+    public String createView(BoardReqDto boardReqDto) {
         return "/board/create";
     }
+
+
     @PostMapping
-    public ResponseEntity create(Board board) {
+    public String create(@Valid BoardReqDto boardReqDto, BindingResult bindingResult) {
+
+        if (bindingResult.hasErrors()) {
+            return "/board/create";
+        }
 
 
 
-        return ResponseEntity.status(HttpStatus.CREATED).build();
+        return "redirect:/board";
     }
 
 }
