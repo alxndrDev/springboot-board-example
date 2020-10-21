@@ -1,5 +1,6 @@
 package com.example.board.domain.board;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -14,7 +15,10 @@ import javax.validation.Valid;
  **/
 @Controller
 @RequestMapping("/board")
+@RequiredArgsConstructor
 public class BoardController {
+
+    private final BoardService boardService;
 
     @GetMapping
     public String createView(BoardReqDto boardReqDto) {
@@ -29,9 +33,9 @@ public class BoardController {
             return "/board/create";
         }
 
+        Long newId = boardService.createBoard(boardReqDto);
 
-
-        return "redirect:/board";
+        return "redirect:/board/" + newId;
     }
 
 }

@@ -1,7 +1,11 @@
 package com.example.board.domain.board;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,7 +18,8 @@ import java.time.LocalDateTime;
  * @date 2020-10-21
  **/
 @Entity
-@Getter @Setter
+@Getter
+@Builder
 public class Board {
 
     @Id
@@ -25,7 +30,9 @@ public class Board {
 
     private String content;
 
+    @CreationTimestamp
     private LocalDateTime createdAt;
 
+    @UpdateTimestamp
     private LocalDateTime updatedAt;
 }
