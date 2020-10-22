@@ -19,8 +19,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * @author Alexander
  * @date 2020-10-21
  **/
-@ExtendWith(SpringExtension.class)
-@SpringBootTest(classes = BoardApplication.class)
+
+@SpringBootTest
 @AutoConfigureMockMvc
 class BoardControllerTest {
 
