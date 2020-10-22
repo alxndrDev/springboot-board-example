@@ -1,26 +1,26 @@
 package com.example.board.domain.board;
 
+import com.example.board.BoardApplication;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
 /**
  * @author Alexander
  * @date 2020-10-21
  **/
-@RunWith(SpringRunner.class)
-@SpringBootTest
+@ExtendWith(SpringExtension.class)
+@SpringBootTest(classes = BoardApplication.class)
 @AutoConfigureMockMvc
 class BoardControllerTest {
 
@@ -36,7 +36,7 @@ class BoardControllerTest {
     }
 
     @Test
-    public void 글생성테스트() throws Exception {
+    public void create() throws Exception {
         mockMvc.perform(post("/board")
                 .contentType(MediaType.APPLICATION_FORM_URLENCODED)
                 .param("title", "테스트중입니다.")
