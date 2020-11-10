@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
@@ -20,8 +21,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * @date 2020-10-21
  **/
 
-@SpringBootTest
-@AutoConfigureMockMvc
+@ExtendWith(SpringExtension.class)
+@WebMvcTest(BoardController.class)
+//@AutoConfigureMockMvc
 class BoardControllerTest {
 
     @Autowired
@@ -36,7 +38,7 @@ class BoardControllerTest {
     }
 
     @Test
-    public void create() throws Exception {
+    public void 글쓰기() throws Exception {
         mockMvc.perform(post("/board")
                 .contentType(MediaType.APPLICATION_FORM_URLENCODED)
                 .param("title", "테스트중입니다.")
