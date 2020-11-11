@@ -1,7 +1,9 @@
 package com.example.board.domain.board;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import javax.persistence.Entity;
@@ -17,6 +19,7 @@ import java.time.LocalDateTime;
 @Entity
 @Getter
 @Builder
+@AllArgsConstructor @NoArgsConstructor
 public class Board {
 
     @Id

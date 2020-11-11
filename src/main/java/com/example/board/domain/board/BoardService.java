@@ -24,5 +24,4 @@ public class BoardService {
 
         return newBoard.getId();
     }
-
 }
